@@ -51,7 +51,6 @@ class App(private val files: Array<File>, private var index: Int = 0) : JFrame()
         @JvmStatic
         fun main(args: Array<String>) {
             val files = File(args[0]).listFiles()!!
-            files.sort()
             val index = if (args.size > 1) {
                 Integer.parseInt(args[1])
             } else {
