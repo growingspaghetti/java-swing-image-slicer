@@ -26,8 +26,13 @@ Split images are placed in *slices* directory under the current directory.
 
 ![screenshot-0.png](screenshot-0.png)
 
-Mouse clicks define the horizontal lines to cut, and pressing the *Enter* key does the slicing.
+Mouse clicks define the horizontal lines to cut, by pushing the *DEL* key you can clear those lines, and pressing the *Enter* key does the slicing.
 
 ![screenshot-1.gif](screenshot-1.gif)
 
 ![screenshot-2.gif](screenshot-2.gif)
+
+# Development
+```shell
+./gradlew shadowJar
+```

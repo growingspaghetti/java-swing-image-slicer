@@ -17,9 +17,15 @@ class App(private val files: Array<File>, private var index: Int = 0) : JFrame()
         val im: InputMap = panel.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
         val am = panel.actionMap
         im.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "entered")
+        im.put(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0), "deleted")
         am.put("entered", object : AbstractAction() {
             override fun actionPerformed(e: ActionEvent?) {
                 forwardPage()
+            }
+        })
+        am.put("deleted", object : AbstractAction() {
+            override fun actionPerformed(e: ActionEvent?) {
+                clearLines()
             }
         })
         files.sort()
@@ -35,6 +41,12 @@ class App(private val files: Array<File>, private var index: Int = 0) : JFrame()
         myPanel = MyPanel(files[index]);
         panel.add(myPanel, BorderLayout.CENTER)
         title = "page $index"
+    }
+
+    private fun clearLines() {
+        myPanel.clearLines();
+        panel.isVisible = false
+        panel.isVisible = true
     }
 
     private fun forwardPage() {
@@ -93,6 +105,10 @@ class MyPanel(private val file: File) : JPanel() {
             val sub = image.getSubimage(0, y, image.width, h);
             ImageIO.write(sub, "jpg", File("slices/${file.nameWithoutExtension}" + "_%04d.jpg".format(i)));
         }
+    }
+
+    fun clearLines() {
+        points.clear();
     }
 
     override fun paint(g: Graphics) {
