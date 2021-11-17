@@ -34,7 +34,7 @@ class App(private val files: Array<File>, private var index: Int = 0) : JFrame()
 
     private fun loadPage() {
         if (index >= files.size) {
-            JOptionPane.showMessageDialog(this, "", "There's more page", JOptionPane.PLAIN_MESSAGE)
+            JOptionPane.showMessageDialog(this, "", "There's no more page", JOptionPane.PLAIN_MESSAGE)
             return
         }
         println("loading page $index")
